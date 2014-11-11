@@ -6,7 +6,8 @@ Changelog
 
 **Current Development**
 
-* Added `htalk` command line to search for HackerNews entries
+* Added `mvnsearch` tool to search for maven artifacts 
+* Added `htalk` to search for HackerNews entries
 
 Versioning
 ----------
