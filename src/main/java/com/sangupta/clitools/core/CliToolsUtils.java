@@ -21,6 +21,12 @@
 
 package com.sangupta.clitools.core;
 
+import java.io.File;
+import java.io.FileFilter;
+
+import org.apache.commons.io.IOCase;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
+
 import com.sangupta.jerry.store.PropertiesUserLocalStore;
 import com.sangupta.jerry.store.UserLocalStore;
 
@@ -45,5 +51,52 @@ public class CliToolsUtils {
 		
 		return localStore;
 	}
+	
+	/**
+	 * Check if a given argument has wild-cards present in it or not.
+	 * 
+	 * @param arg
+	 * @return
+	 */
+	public static boolean hasWildcards(String arg) {
+		if(arg == null) {
+			return false;
+		}
+		
+		char[] name = arg.toCharArray();
+		int index = 0;
+		char c;
+		for( ; index < name.length; index++) {
+			c = name[index];
+			if(c == '*' || c == '?') {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
+	/**
+	 * Resolve the supplied file argument which may contain wildcards
+	 * to a list of all valid files.
+	 * 
+	 * @param arg
+	 * @return
+	 */
+	public static File[] resolveFiles(final File currentDir, String arg) {
+		if(arg == null) {
+			return null;
+		}
+		
+		if(!hasWildcards(arg)) {
+			File file = new File(currentDir, arg);
+			return new File[] { file };
+		}
+		
+		// the argument does have wild cards
+		// resolve it
+		FileFilter wildcardFileFilter = new WildcardFileFilter(arg, IOCase.SYSTEM);
+		File[] files = currentDir.listFiles(wildcardFileFilter);
+		return files;
+	}
 }
