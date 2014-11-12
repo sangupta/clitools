@@ -6,8 +6,10 @@ Changelog
 
 **Current Development**
 
-* Added `mvnsearch` tool to search for maven artifacts 
-* Added `htalk` to search for HackerNews entries
+* `gd`: get word-meanings from Google Dictionary
+* `prop`: manage user-specific local properties to be used in other tools
+* `mvnsearch`: search for maven artifacts
+* `htalk`: search for HackerNews entries
 
 Versioning
 ----------
