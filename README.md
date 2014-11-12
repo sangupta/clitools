@@ -6,6 +6,8 @@ Changelog
 
 **Current Development**
 
+* `uuidgen`: Generate a unique UUID
+* `epoch`: show current time as epoch, millis in GMT
 * `gd`: get word-meanings from Google Dictionary
 * `prop`: manage user-specific local properties to be used in other tools
 * `mvnsearch`: search for maven artifacts
