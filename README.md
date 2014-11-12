@@ -6,6 +6,13 @@ Changelog
 
 **Current Development**
 
+* `crc32`: Compute CRC32 hash
+* `md2`: Compute MD2 hash
+* `md5`: Compute MD5 hash
+* `sha1`: Compute SHA-1 hash
+* `sha256`: Compute SHA-256 hash
+* `sha384`: Compute SHA-384 hash
+* `sha512`: Compute SHA-512 hash
 * `uuidgen`: Generate a unique UUID
 * `epoch`: show current time as epoch, millis in GMT
 * `gd`: get word-meanings from Google Dictionary
