@@ -6,6 +6,7 @@ Changelog
 
 **Current Development**
 
+* `mpip`: Show the IP address of the machine
 * `crc32`: Compute CRC32 hash
 * `md2`: Compute MD2 hash
 * `md5`: Compute MD5 hash
