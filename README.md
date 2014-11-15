@@ -6,6 +6,9 @@ Changelog
 
 **Current Development**
 
+* `trim`: Trim each line of given files
+* `ltrim`: Left-trim each line of given files
+* `rtrim`: Right-trim each line of given files
 * `mpip`: Show the IP address of the machine
 * `crc32`: Compute CRC32 hash
 * `md2`: Compute MD2 hash
