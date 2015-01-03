@@ -17,12 +17,6 @@ public class FacebookInfo implements Runnable {
 	@Arguments(description = "the account or page to show information for")
 	public String account;
 	
-	public static void main(String[] args) {
-		FacebookInfo info = new FacebookInfo();
-		info.account = "shirleysetiamusic";
-		info.run();
-	}
-
 	@Override
 	public void run() {
 		if(AssertUtils.isEmpty(this.account)) {
