@@ -38,7 +38,7 @@ import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.StringUtils;
 
-@Command(name = "cur", description = "Currency converter")
+@Command(name = "curr", description = "Currency converter")
 public class Currency implements Runnable {
 	
 	@Inject
