@@ -21,13 +21,8 @@
 
 package com.sangupta.clitools.core;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-
 import com.sangupta.jerry.store.PropertiesUserLocalStore;
 import com.sangupta.jerry.store.UserLocalStore;
-import com.sangupta.jerry.util.FileUtils;
 
 /**
  * Simple utility classes for CliTools
@@ -51,38 +46,4 @@ public class CliToolsUtils {
 		return localStore;
 	}
 	
-	/**
-	 * Check if a given argument has wild-cards present in it or not.
-	 * 
-	 * @param arg
-	 * @return
-	 */
-	public static boolean hasWildcards(String arg) {
-		if(arg == null) {
-			return false;
-		}
-		
-		char[] name = arg.toCharArray();
-		int index = 0;
-		char c;
-		for( ; index < name.length; index++) {
-			c = name[index];
-			if(c == '*' || c == '?') {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-
-	/**
-	 * Resolve the supplied file argument which may contain wildcards
-	 * to a list of all valid files.
-	 * 
-	 * @param arg
-	 * @return
-	 */
-	public static List<File> resolveFiles(final File currentDir, String arg) {
-		return FileUtils.listFiles(currentDir, arg, true);
-	}
 }

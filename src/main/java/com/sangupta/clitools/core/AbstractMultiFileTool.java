@@ -23,8 +23,9 @@ package com.sangupta.clitools.core;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
+
+import com.sangupta.jerry.util.FileUtils;
 
 public abstract class AbstractMultiFileTool {
 
@@ -38,7 +39,7 @@ public abstract class AbstractMultiFileTool {
 		
 		// read a list of all files that need to be worked upon
 		for(String arg : args) {
-			List<File> files = CliToolsUtils.resolveFiles(new File(".").getAbsoluteFile(), arg);
+			List<File> files = FileUtils.listFiles(new File(".").getAbsoluteFile(), arg, true);
 		
 			if(files == null) {
 				System.out.println("No file found");
