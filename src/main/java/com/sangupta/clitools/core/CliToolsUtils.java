@@ -22,13 +22,12 @@
 package com.sangupta.clitools.core;
 
 import java.io.File;
-import java.io.FileFilter;
-
-import org.apache.commons.io.IOCase;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
+import java.util.Collection;
+import java.util.List;
 
 import com.sangupta.jerry.store.PropertiesUserLocalStore;
 import com.sangupta.jerry.store.UserLocalStore;
+import com.sangupta.jerry.util.FileUtils;
 
 /**
  * Simple utility classes for CliTools
@@ -83,20 +82,7 @@ public class CliToolsUtils {
 	 * @param arg
 	 * @return
 	 */
-	public static File[] resolveFiles(final File currentDir, String arg) {
-		if(arg == null) {
-			return null;
-		}
-		
-		if(!hasWildcards(arg)) {
-			File file = new File(currentDir, arg);
-			return new File[] { file };
-		}
-		
-		// the argument does have wild cards
-		// resolve it
-		FileFilter wildcardFileFilter = new WildcardFileFilter(arg, IOCase.SYSTEM);
-		File[] files = currentDir.listFiles(wildcardFileFilter);
-		return files;
+	public static List<File> resolveFiles(final File currentDir, String arg) {
+		return FileUtils.listFiles(currentDir, arg, true);
 	}
 }
