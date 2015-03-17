@@ -21,7 +21,7 @@
 
 package com.sangupta.clitools.misc;
 
-import io.airlift.command.Command;
+import io.airlift.airline.Command;
 
 /**
  * Show the current time in epoch millis.

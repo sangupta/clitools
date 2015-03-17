@@ -21,11 +21,11 @@
 
 package com.sangupta.clitools.dir;
 
-import io.airlift.command.Arguments;
-import io.airlift.command.Command;
-import io.airlift.command.HelpOption;
-import io.airlift.command.Option;
-import io.airlift.command.SingleCommand;
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.Option;
+import io.airlift.airline.SingleCommand;
 
 import java.io.File;
 import java.io.IOException;

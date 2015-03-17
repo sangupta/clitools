@@ -21,9 +21,9 @@
 
 package com.sangupta.clitools.net;
 
-import io.airlift.command.Command;
-import io.airlift.command.HelpOption;
-import io.airlift.command.SingleCommand;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

@@ -68,12 +68,12 @@
 		<dependency>
 			<groupId>io.airlift</groupId>
 			<artifactId>airline</artifactId>
-			<version>0.6</version>
+			<version>0.7</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sangupta</groupId>
 			<artifactId>jerry-core</artifactId>
-			<version>1.5.1-SNAPSHOT</version>
+			<version>1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sangupta</groupId>

@@ -21,7 +21,7 @@
 
 package com.sangupta.clitools.misc;
 
-import io.airlift.command.Command;
+import io.airlift.airline.Command;
 
 import java.util.UUID;
 
