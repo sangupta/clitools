@@ -21,8 +21,12 @@
 
 package com.sangupta.clitools.facebook;
 
+import javax.inject.Inject;
+
 import io.airlift.airline.Arguments;
 import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 import com.google.gson.FieldNamingPolicy;
 import com.sangupta.clitools.CliTool;
@@ -38,6 +42,22 @@ public class FacebookInfo implements Runnable, CliTool {
 	
 	@Arguments(description = "the account or page to show information for")
 	public String account;
+	
+	@Inject
+	private HelpOption helpOption;
+	
+	public static void main(String[] args) {
+		if(AssertUtils.isEmpty(args)) {
+			args = new String[] { "--help" };
+		}
+		
+		FacebookInfo fbinfo = SingleCommand.singleCommand(FacebookInfo.class).parse(args);
+		if(fbinfo.helpOption.showHelpIfRequested()) {
+			return;
+		}
+		
+		fbinfo.run();
+	}
 	
 	@Override
 	public void run() {
@@ -55,6 +75,7 @@ public class FacebookInfo implements Runnable, CliTool {
 		
 		if(!response.isSuccess()) {
 			System.out.println("Non-success response from server as: " + response.trace());
+			System.out.println("May be user/page does not exist!");
 			return;
 		}
 		
@@ -63,18 +84,18 @@ public class FacebookInfo implements Runnable, CliTool {
 		// start display
 		
 		ConsoleTable table = new ConsoleTable(ConsoleTableLayout.MULTI_LINE);
-		table.setColumnSeparator(": " );
-		table.addRow("User Name", info.username);
-		table.addRow("ID", info.id);
-		table.addRow("Name", info.name);
-		table.addRow("Link", info.link);
-		table.addRow("Website", info.website);
+		table.setColumnSeparator("  " );
+		table.addRow("User Name", nonNull(info.username));
+		table.addRow("ID", nonNull(info.id));
+		table.addRow("Name", nonNull(info.name));
+		table.addRow("Link", nonNull(info.link));
+		table.addRow("Website", nonNull(info.website));
 		table.addRow("Talking About", info.talkingAboutCount);
 		table.addRow("Likes", info.likes);
-		table.addRow("Bio", info.bio);
-		table.addRow("About", info.about);
-		table.addRow("Category", info.category);
-		table.addRow("Hometown", info.hometown);
+		table.addRow("Bio", nonNull(info.bio));
+		table.addRow("About", nonNull(info.about));
+		table.addRow("Category", nonNull(info.category));
+		table.addRow("Hometown", nonNull(info.hometown));
 		
 		table.write(System.out);
 	}
@@ -93,5 +114,13 @@ public class FacebookInfo implements Runnable, CliTool {
 		String website;
 		long talkingAboutCount;
 		
+	}
+	
+	private static String nonNull(String arg) {
+		if(arg == null) {
+			return "";
+		}
+		
+		return arg.trim();
 	}
 }
