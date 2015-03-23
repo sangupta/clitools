@@ -114,13 +114,14 @@ public class CliMain {
 	 * 
 	 */
 	private static void showCommandList() {
-		System.out.println();
+		System.out.println("Available commands:\n");
 		ConsoleTable table = new ConsoleTable();
-		table.setColumnSeparator(" ");
+		table.setColumnSeparator("  ");
 		for(Entry<String, String> entry : commandHelp.entrySet()) {
 			table.addRow(entry.getKey(), entry.getValue());
 		}
 		table.write(System.out);
+		System.out.println();
 	}
 
 }
