@@ -21,6 +21,8 @@
 
 package com.sangupta.clitools.core;
 
+import io.airlift.airline.Option;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -29,6 +31,9 @@ import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.util.FileUtils;
 
 public abstract class AbstractMultiFileTool implements CliTool {
+	
+	@Option(name = { "--recursive", "-r" }, description = "Scan child folders as well" )
+	private boolean recursive;
 
 	public void execute(String[] args) {
 		preProcess();
@@ -40,7 +45,7 @@ public abstract class AbstractMultiFileTool implements CliTool {
 		
 		// read a list of all files that need to be worked upon
 		for(String arg : args) {
-			List<File> files = FileUtils.listFiles(new File(".").getAbsoluteFile(), arg, true);
+			List<File> files = FileUtils.listFiles(new File(".").getAbsoluteFile(), arg, this.recursive);
 		
 			if(files == null) {
 				System.out.println("No file found");
