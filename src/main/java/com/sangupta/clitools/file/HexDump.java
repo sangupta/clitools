@@ -40,11 +40,12 @@ import javax.inject.Inject;
 
 import org.apache.commons.io.IOUtils;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.ConsoleUtils;
 
 @Command(name = "hex", description = "Dump a given file as hex")
-public class HexDump {
+public class HexDump implements CliTool {
 	
 	@Inject
 	private HelpOption helpOption;
