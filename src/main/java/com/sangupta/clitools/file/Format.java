@@ -28,6 +28,7 @@ import io.airlift.airline.Option;
 import io.airlift.airline.SingleCommand;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.StringWriter;
 
 import javax.inject.Inject;
@@ -38,6 +39,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.FileUtils;
@@ -80,9 +84,28 @@ public class Format implements CliTool {
 			case "xml":
 				formatXML(file);
 				return;
+				
+			case "json":
+				formatJSON(file);
+					return;
 		}
 		
 		System.out.println("Formatter for file extension: " + ext + " not available!");
+	}
+
+	private void formatJSON(File file) {
+		String json = null;
+		try {
+			json = org.apache.commons.io.FileUtils.readFileToString(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(json);
+		String out = new GsonBuilder().setPrettyPrinting().create().toJson(element);
+		System.out.println(out);
 	}
 
 	private void formatXML(File file) {
