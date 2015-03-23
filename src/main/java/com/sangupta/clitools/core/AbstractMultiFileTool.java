@@ -25,9 +25,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.util.FileUtils;
 
-public abstract class AbstractMultiFileTool {
+public abstract class AbstractMultiFileTool implements CliTool {
 
 	public void execute(String[] args) {
 		preProcess();

@@ -32,6 +32,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.google.gson.FieldNamingPolicy;
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.AssertUtils;
@@ -39,7 +40,7 @@ import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.StringUtils;
 
 @Command(name = "curr", description = "Currency converter")
-public class Currency implements Runnable {
+public class Currency implements Runnable, CliTool {
 	
 	@Inject
 	private HelpOption helpOption;

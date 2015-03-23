@@ -11,13 +11,14 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.io.StringLineIterator;
 import com.sangupta.jerry.util.AssertUtils;
 
 @Command(name = "stock", description = "Stock quotes from NASDAQ")
-public class StockQuote implements Runnable {
+public class StockQuote implements Runnable, CliTool {
 
 	@Inject
 	private HelpOption helpOption;

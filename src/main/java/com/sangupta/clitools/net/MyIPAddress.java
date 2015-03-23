@@ -33,6 +33,8 @@ import java.util.Enumeration;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
+
 /**
  * Display the current IP address of the machine.
  * 
@@ -40,7 +42,7 @@ import javax.inject.Inject;
  *
  */
 @Command(name = "myip", description = "Display the IP address of this machine")
-public class MyIPAddress {
+public class MyIPAddress implements CliTool {
 	
 	@Inject
 	private HelpOption helpOption;

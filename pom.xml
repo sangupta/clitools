@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>com.sangupta</groupId>
 			<artifactId>jerry-core</artifactId>
-			<version>1.6.1</version>
+			<version>1.6.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sangupta</groupId>
@@ -89,6 +89,13 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.3.2</version>
+		</dependency>
+		
+		<!-- For discovering commands -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.9</version>
 		</dependency>
 	</dependencies>
 	

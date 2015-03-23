@@ -33,6 +33,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.print.ConsoleTable.ConsoleTableLayout;
@@ -48,7 +49,7 @@ import com.sangupta.jerry.util.UriUtils;
  *
  */
 @Command(name = "mvnsearch", description = "Search Maven artifacts")
-public class MavenSearch implements Runnable {
+public class MavenSearch implements Runnable, CliTool {
 	
 	private static final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
 	

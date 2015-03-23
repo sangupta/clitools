@@ -25,6 +25,7 @@ import io.airlift.airline.Arguments;
 import io.airlift.airline.Command;
 
 import com.google.gson.FieldNamingPolicy;
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
@@ -33,7 +34,7 @@ import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 
 @Command(name = "fbinfo", description = "Show information about a facebook account or page")
-public class FacebookInfo implements Runnable {
+public class FacebookInfo implements Runnable, CliTool {
 	
 	@Arguments(description = "the account or page to show information for")
 	public String account;

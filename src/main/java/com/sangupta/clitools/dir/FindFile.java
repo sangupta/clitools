@@ -11,11 +11,12 @@ import io.airlift.airline.SingleCommand;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.FileUtils;
 
 @Command(name = "findfile", description = "Find files in a directory")
-public class FindFile implements Runnable {
+public class FindFile implements Runnable, CliTool {
 	
 	@Inject
 	private HelpOption helpOption;

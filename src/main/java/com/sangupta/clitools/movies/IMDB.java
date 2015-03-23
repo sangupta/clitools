@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.annotations.SerializedName;
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.AssertUtils;
@@ -20,7 +21,7 @@ import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.UriUtils;
 
 @Command(name = "imdb", description = "Fetch movie information from IMDB")
-public class IMDB implements Runnable {
+public class IMDB implements Runnable, CliTool {
 	
 	@Arguments
 	private List<String> arguments;

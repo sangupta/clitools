@@ -21,6 +21,8 @@
 
 package com.sangupta.clitools.misc;
 
+import com.sangupta.clitools.CliTool;
+
 import io.airlift.airline.Command;
 
 /**
@@ -30,7 +32,7 @@ import io.airlift.airline.Command;
  *
  */
 @Command(name = "epoch", description = "Show current time as epoch, millis in GMT")
-public class Epoch {
+public class Epoch implements CliTool {
 
 	public static void main(String[] args) {
 		System.out.println(System.currentTimeMillis());

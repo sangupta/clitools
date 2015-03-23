@@ -29,6 +29,7 @@ import io.airlift.airline.SingleCommand;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.clitools.core.CliToolsUtils;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
@@ -44,7 +45,7 @@ import com.sangupta.jerry.util.UriUtils;
  *
  */
 @Command(name = "gd", description = "Google dictionary from command line")
-public class GoogleDictionary implements Runnable {
+public class GoogleDictionary implements Runnable, CliTool {
 	
 	@Inject
 	public HelpOption helpOption;

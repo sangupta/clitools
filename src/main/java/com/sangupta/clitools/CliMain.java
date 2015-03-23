@@ -21,13 +21,22 @@
 
 package com.sangupta.clitools;
 
+import io.airlift.airline.Command;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
-import com.sangupta.clitools.htalk.Htalk;
+import org.reflections.Reflections;
+
+import com.sangupta.jerry.print.ConsoleTable;
+import com.sangupta.jerry.util.AssertUtils;
 
 /**
  * Main function to call any command within the `clitools` package.
@@ -37,15 +46,33 @@ import com.sangupta.clitools.htalk.Htalk;
  */
 public class CliMain {
 	
-	private static final Map<String, Class<?>> availableCommands = new HashMap<String, Class<?>>();
+	private static final Map<String, Class<? extends CliTool>> availableCommands = new HashMap<String, Class<? extends CliTool>>();
+	
+	private static final Map<String, String> commandHelp = new TreeMap<String, String>();
 	
 	static {
-		availableCommands.put("htalk", Htalk.class);
+		Reflections reflections = new Reflections("com.sangupta.clitools");
+		Set<Class<? extends CliTool>> commands = reflections.getSubTypesOf(CliTool.class);
+		
+		if(AssertUtils.isNotEmpty(commands)) {
+			for(Class<? extends CliTool> clazz : commands) {
+				if(Modifier.isAbstract(clazz.getModifiers())) {
+					// no need to instantiate abstract classes
+					continue;
+				}
+
+				Command com = clazz.getAnnotation(Command.class);
+				if(com != null) {
+					availableCommands.put(com.name(), clazz);
+					commandHelp.put(com.name(), com.description());
+				}
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
 		if(args.length == 0) {
-			System.out.println("No command specified.");
+			showCommandList();
 			return;
 		}
 		
@@ -70,6 +97,16 @@ public class CliMain {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	private static void showCommandList() {
+		System.out.println();
+		ConsoleTable table = new ConsoleTable();
+		table.setColumnSeparator(" ");
+		for(Entry<String, String> entry : commandHelp.entrySet()) {
+			table.addRow(entry.getKey(), entry.getValue());
+		}
+		table.write(System.out);
 	}
 
 }

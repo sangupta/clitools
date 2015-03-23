@@ -36,6 +36,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.google.gson.annotations.SerializedName;
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
@@ -54,7 +55,7 @@ import com.sangupta.jerry.util.UriUtils;
  *
  */
 @Command(name = "htalk", description = "Search hackernews threads")
-public class Htalk implements Runnable {
+public class Htalk implements Runnable, CliTool {
 	
 	@Inject
 	public HelpOption helpOption;

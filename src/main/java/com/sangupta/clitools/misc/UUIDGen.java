@@ -25,6 +25,8 @@ import io.airlift.airline.Command;
 
 import java.util.UUID;
 
+import com.sangupta.clitools.CliTool;
+
 /**
  * Generate a new UUID.
  * 
@@ -32,7 +34,7 @@ import java.util.UUID;
  *
  */
 @Command(name = "uuidgen", description = "Generates a new universally unique identifier (UUID)")
-public class UUIDGen {
+public class UUIDGen implements CliTool {
 
 	public static void main(String[] args) {
 		UUID uuid = UUID.randomUUID();

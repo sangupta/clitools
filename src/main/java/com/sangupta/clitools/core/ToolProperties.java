@@ -32,6 +32,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.print.ConsoleTable.ConsoleTableLayout;
 import com.sangupta.jerry.store.UserLocalStore;
@@ -44,7 +45,7 @@ import com.sangupta.jerry.util.AssertUtils;
  *
  */
 @Command(name = "prop", description = "Provides access to user properties")
-public class ToolProperties {
+public class ToolProperties implements CliTool {
 	
 	@Inject
 	private HelpOption helpOption;
