@@ -46,10 +46,20 @@ import com.sangupta.jerry.util.AssertUtils;
  */
 public class CliMain {
 	
+	/**
+	 * Map of all commands with their .class instances as values
+	 * 
+	 */
 	private static final Map<String, Class<? extends CliTool>> availableCommands = new HashMap<String, Class<? extends CliTool>>();
 	
+	/**
+	 * Map between all commands and their basic description
+	 */
 	private static final Map<String, String> commandHelp = new TreeMap<String, String>();
 	
+	/**
+	 * Discover all commands via reflection
+	 */
 	static {
 		Reflections reflections = new Reflections("com.sangupta.clitools");
 		Set<Class<? extends CliTool>> commands = reflections.getSubTypesOf(CliTool.class);
@@ -99,6 +109,10 @@ public class CliMain {
 
 	}
 
+	/**
+	 * Show a list of all commands with their basic description
+	 * 
+	 */
 	private static void showCommandList() {
 		System.out.println();
 		ConsoleTable table = new ConsoleTable();
