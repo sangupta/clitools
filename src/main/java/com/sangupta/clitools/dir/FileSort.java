@@ -39,6 +39,7 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import com.sangupta.clitools.core.AbstractMultiFileTool;
+import com.sangupta.jerry.util.AssertUtils;
 
 /**
  * Sort files in a directory and rename them to prepend a number to signify the
@@ -68,6 +69,10 @@ public class FileSort extends AbstractMultiFileTool {
 	private List<File> files = new ArrayList<>();
 	
 	public static void main(String[] args) {
+		if(AssertUtils.isEmpty(args)) {
+			args = new String[] { "--help" };
+		}
+		
 		FileSort fileSort = SingleCommand.singleCommand(FileSort.class).parse(args);
 		
 		if(fileSort.helpOption.showHelpIfRequested()) {
