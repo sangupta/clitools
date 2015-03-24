@@ -1,28 +1,43 @@
 clitools
 ========
 
+A bundle of command-line tools that are quite useful in day-to-day life. Some of these tools
+are available directly on some OS platforms - but not all - and hence, the cross-platform
+implementation.
+
 Changelog
 ---------
 
 **Current Development**
 
-* `trim`: Trim each line of given files
-* `ltrim`: Left-trim each line of given files
-* `rtrim`: Right-trim each line of given files
-* `mpip`: Show the IP address of the machine
-* `crc32`: Compute CRC32 hash
-* `md2`: Compute MD2 hash
-* `md5`: Compute MD5 hash
-* `sha1`: Compute SHA-1 hash
-* `sha256`: Compute SHA-256 hash
-* `sha384`: Compute SHA-384 hash
-* `sha512`: Compute SHA-512 hash
-* `uuidgen`: Generate a unique UUID
-* `epoch`: show current time as epoch, millis in GMT
-* `gd`: get word-meanings from Google Dictionary
-* `prop`: manage user-specific local properties to be used in other tools
-* `mvnsearch`: search for maven artifacts
-* `htalk`: search for HackerNews entries
+```
+  base64     Base64 encode/decode                                   
+  crc32      Compute the CRC32 hash of given file/file pattern(s)   
+  curr       Currency converter                                     
+  epoch      Show current time as epoch, millis in GMT              
+  fbinfo     Show information about a facebook account or page      
+  filesort   Tool to sort files in a directory by prefixing numerals
+  findfile   Find files in a directory                              
+  gd         Google dictionary from command line                    
+  hex        Dump a given file as hex                               
+  htalk      Search hackernews threads                              
+  imdb       Fetch movie information from IMDB                      
+  ltrim      Remove whitespaces from start of each line of the file 
+  md2        Compute the MD2 hash of given file/file pattern(s)     
+  md5        Compute the MD5 hash of given file/file pattern(s)     
+  mvnsearch  Search Maven artifacts                                 
+  myip       Display the IP address of this machine                 
+  prop       Provides access to user properties                     
+  randfile   Generate a random file of given size                   
+  rtrim      Remove whitespaces from end of each line of the file   
+  sha1       Compute the SHA1 hash of given file/file pattern(s)    
+  sha256     Compute the SHA256 hash of given file/file pattern(s)  
+  sha384     Compute the SHA384 hash of given file/file pattern(s)  
+  sha512     Compute the SHA512 hash of given file/file pattern(s)  
+  stock      Stock quotes from NASDAQ                               
+  trim       Remove whitespaces from each line of the file          
+  uuidgen    Generates a new universally unique identifier (UUID)   
+```
 
 Versioning
 ----------
@@ -47,7 +62,7 @@ License
 	
 ```
 clitools - Simple command line tools
-Copyright (c) 2014, Sandeep Gupta
+Copyright (c) 2014 - 2015, Sandeep Gupta
 
 	http://sangupta.com/projects/clitools
 
