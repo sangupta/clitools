@@ -21,9 +21,18 @@
 
 package com.sangupta.clitools.misc;
 
-import com.sangupta.clitools.CliTool;
-
+import io.airlift.airline.Arguments;
 import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
+
+import java.sql.Date;
+
+import javax.inject.Inject;
+
+import com.sangupta.clitools.CliTool;
+import com.sangupta.jerry.util.AssertUtils;
+import com.sangupta.jerry.util.StringUtils;
 
 /**
  * Show the current time in epoch millis.
@@ -33,9 +42,40 @@ import io.airlift.airline.Command;
  */
 @Command(name = "epoch", description = "Show current time as epoch, millis in GMT")
 public class Epoch implements CliTool {
+	
+	@Inject
+	private HelpOption helpOption;
+	
+	@Arguments(description = "the timestamp value to convert into time string")
+	private String arguments;
 
 	public static void main(String[] args) {
-		System.out.println(System.currentTimeMillis());
+		if(AssertUtils.isEmpty(args)) {
+			System.out.println(System.currentTimeMillis());
+			return;
+		}
+		
+		if(args.length > 1) {
+			args = new String[] { "--help" };
+		}
+		
+		long time = StringUtils.getLongValue(args[0], -1);
+		if(time < 0) {
+			args = new String[] { "--help" };
+		}
+		
+		Epoch epoch = SingleCommand.singleCommand(Epoch.class).parse(args);
+		if(epoch.helpOption.showHelpIfRequested()) {
+			return;
+		}
+		
+		epoch.execute(time);
+	}
+
+	private void execute(long time) {
+		Date date = new Date(time);
+		System.out.println("Local Date : " + date.toLocaleString());
+		System.out.println("GMT Date   : " + date.toGMTString());
 	}
 
 }
