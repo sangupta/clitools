@@ -87,6 +87,7 @@ public class CleanTemp implements CliTool {
 	private void recoverSpace(List<File> files) {
 		long size = 0;
 		int count = 0;
+		long unrecoverable = 0;
 		for(File file : files) {
 			if(file.exists() && file.isFile() && file.canWrite()) {
 				long fs = file.length();
@@ -94,23 +95,32 @@ public class CleanTemp implements CliTool {
 				if(deleted) {
 					size += fs;
 					count++;
+				} else {
+					unrecoverable += file.length();
 				}
+			} else {
+				unrecoverable += file.length();
 			}
 		}
 		
 		System.out.println("Total recovered space is " + ReadableUtils.getReadableByteCount(size) + " from " + count + " files.");
+		System.out.println("Unrecoverable space is " + ReadableUtils.getReadableByteCount(unrecoverable));
 	}
 
 	private void showInfo(List<File> files) {
 		long size = 0;
 		int count = 0;
+		long unrecoverable = 0;
 		for(File file : files) {
 			if(file.exists() && file.isFile() && file.canWrite()) {
 				size += file.length();
 				count++;
+			} else {
+				unrecoverable += file.length();
 			}
 		}
 		
 		System.out.println("Total recoverable space is " + ReadableUtils.getReadableByteCount(size) + " in " + count + " files.");
+		System.out.println("Unrecoverable space is " + ReadableUtils.getReadableByteCount(unrecoverable));
 	}
 }
