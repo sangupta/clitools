@@ -1,14 +1,14 @@
 package com.sangupta.clitools.dir;
 
-import java.io.File;
-import java.util.List;
-
-import javax.inject.Inject;
-
 import io.airlift.airline.Command;
 import io.airlift.airline.HelpOption;
 import io.airlift.airline.Option;
 import io.airlift.airline.SingleCommand;
+
+import java.io.File;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.constants.SystemPropertyNames;
@@ -44,10 +44,7 @@ public class CleanTemp implements CliTool {
 			return;
 		}
 		
-		if(cleanTemp.clean) {
-			cleanTemp.execute();
-			return;
-		}
+		cleanTemp.execute();
 	}
 
 	private void execute() {
