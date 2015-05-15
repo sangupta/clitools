@@ -1,8 +1,14 @@
 package com.sangupta.clitools.natural;
 
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
+
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
@@ -10,11 +16,26 @@ import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 
-public class EarthQuakes {
+@Command(name = "quakes", description = "Get details of recently reported earthquakes from US Geological Survey")
+public class EarthQuakes implements Runnable {
 	
 	private static final String BASEURI = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
 	
+	@Inject
+	private HelpOption helpOption;
+	
 	public static void main(String[] args) {
+		EarthQuakes quake = SingleCommand.singleCommand(EarthQuakes.class).parse(args);
+		
+		if(quake.helpOption.showHelpIfRequested()) {
+			return;
+		}
+		
+		quake.run();
+	}
+	
+	@Override
+	public void run() {
 		WebResponse response = WebInvoker.getResponse(BASEURI);
 		if(response == null) {
 			System.out.println("Unable to fetch earthquake details from the internet");
