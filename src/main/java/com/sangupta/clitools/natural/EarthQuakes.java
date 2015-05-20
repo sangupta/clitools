@@ -10,14 +10,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.sangupta.clitools.CliTool;
 import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
+import com.sangupta.jerry.util.TimeDurationUtils;
 
 @Command(name = "quakes", description = "Get details of recently reported earthquakes from US Geological Survey")
-public class EarthQuakes implements Runnable {
+public class EarthQuakes implements Runnable, CliTool {
 	
 	private static final String BASEURI = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
 	
@@ -56,9 +58,9 @@ public class EarthQuakes implements Runnable {
 		Collections.sort(quakes.features);
 		
 		ConsoleTable table = new ConsoleTable();
-		table.addHeaderRow("Intensity", "Place", "Time");
+		table.addHeaderRow("Intensity", "Place", "Time", "");
 		for(Feature feature : quakes.features) {
-			table.addRow(feature.properties.mag, feature.properties.place, new Date(feature.properties.time));
+			table.addRow(feature.properties.mag, feature.properties.place, new Date(feature.properties.time), TimeDurationUtils.ago(feature.properties.time));
 		}
 		table.write(System.out);
 		
