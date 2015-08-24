@@ -34,6 +34,8 @@ import java.util.Enumeration;
 import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
+import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.jerry.util.AssertUtils;
 
 /**
  * Display the current IP address of the machine.
@@ -55,11 +57,21 @@ public class MyIPAddress implements CliTool {
 		}
 		
 		InetAddress address = myip.getIPAddress();
+		String localIP;
 		if(address == null) {
-			System.out.println("Unknown");
+			localIP = " Unknown";
 		} else {
-			System.out.println(address.toString().substring(1));
+			localIP = address.toString().substring(1);
 		}
+		System.out.println("Local Address: " + localIP);
+		
+		// get public address
+		String publicIP = WebInvoker.fetchResponse("http://curlmyip.com");
+		if(AssertUtils.isEmpty(publicIP)) {
+			return;
+		}
+		
+		System.out.println("Public Address: " + publicIP);
 	}
 	
 	private InetAddress getIPAddress() {
