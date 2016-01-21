@@ -21,13 +21,7 @@
 
 package com.sangupta.clitools.core;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.Help;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.Option;
-import io.airlift.airline.SingleCommand;
-
+import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,6 +31,13 @@ import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.print.ConsoleTable.ConsoleTableLayout;
 import com.sangupta.jerry.store.UserLocalStore;
 import com.sangupta.jerry.util.AssertUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.Help;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.Option;
+import io.airlift.airline.SingleCommand;
 
 /**
  * A simple tool to manage properties within the user local store.
@@ -75,7 +76,7 @@ public class ToolProperties implements CliTool {
 		
 		// work up
 		if(this.list) {
-			List<String> keys = localStore.getAllKeys();
+			Collection<String> keys = localStore.getAllKeys();
 			if(AssertUtils.isEmpty(keys)) {
 				System.out.println("No property stored within the data store");
 				return;
