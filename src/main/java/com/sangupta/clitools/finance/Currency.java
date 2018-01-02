@@ -21,11 +21,6 @@
 
 package com.sangupta.clitools.finance;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.util.Date;
 import java.util.List;
 
@@ -33,11 +28,16 @@ import javax.inject.Inject;
 
 import com.google.gson.FieldNamingPolicy;
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.StringUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 @Command(name = "curr", description = "Currency converter")
 public class Currency implements Runnable, CliTool {

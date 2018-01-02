@@ -21,22 +21,22 @@
 
 package com.sangupta.clitools.google;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.Help;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.clitools.core.CliToolsUtils;
-import com.sangupta.jerry.http.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.UriUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.Help;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 /**
  * Return the meaning of the word via Google Dictionary

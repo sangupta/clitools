@@ -23,19 +23,19 @@ package com.sangupta.clitools.facebook;
 
 import javax.inject.Inject;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import com.google.gson.FieldNamingPolicy;
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.print.ConsoleTable.ConsoleTableLayout;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 @Command(name = "fbinfo", description = "Show information about a facebook account or page")
 public class FacebookInfo implements Runnable, CliTool {

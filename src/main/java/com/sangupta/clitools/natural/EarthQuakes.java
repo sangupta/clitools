@@ -1,9 +1,5 @@
 package com.sangupta.clitools.natural;
 
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -11,12 +7,16 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.TimeDurationUtils;
+
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 @Command(name = "quakes", description = "Get details of recently reported earthquakes from US Geological Survey")
 public class EarthQuakes implements Runnable, CliTool {

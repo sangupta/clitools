@@ -21,12 +21,6 @@
 
 package com.sangupta.clitools.mvn;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.Help;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -34,13 +28,19 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.print.ConsoleTable.ConsoleTableLayout;
 import com.sangupta.jerry.print.ConsoleTableRow;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.UriUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.Help;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 /**
  * Command line tool to search for maven artifacts

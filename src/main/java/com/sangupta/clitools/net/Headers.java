@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.UriUtils;

@@ -1,10 +1,5 @@
 package com.sangupta.clitools.finance;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,10 +7,15 @@ import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.io.StringLineIterator;
 import com.sangupta.jerry.util.AssertUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 @Command(name = "stock", description = "Stock quotes from NASDAQ")
 public class StockQuote implements Runnable, CliTool {

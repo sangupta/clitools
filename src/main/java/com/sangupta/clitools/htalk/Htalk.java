@@ -21,13 +21,6 @@
 
 package com.sangupta.clitools.htalk;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.Help;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.Option;
-import io.airlift.airline.SingleCommand;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -37,7 +30,7 @@ import javax.inject.Inject;
 
 import com.google.gson.annotations.SerializedName;
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.print.ConsoleTable;
 import com.sangupta.jerry.util.AssertUtils;
@@ -46,6 +39,13 @@ import com.sangupta.jerry.util.DesktopUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.StringUtils;
 import com.sangupta.jerry.util.UriUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.Help;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.Option;
+import io.airlift.airline.SingleCommand;
 
 /**
  * A simple command line tool to search HackerNews (http://news.ycombinator.com) submissions

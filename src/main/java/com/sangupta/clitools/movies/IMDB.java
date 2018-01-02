@@ -1,10 +1,5 @@
 package com.sangupta.clitools.movies;
 
-import io.airlift.airline.Arguments;
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,11 +9,16 @@ import org.apache.commons.lang3.StringUtils;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.annotations.SerializedName;
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.http.WebResponse;
 import com.sangupta.jerry.util.AssertUtils;
 import com.sangupta.jerry.util.GsonUtils;
 import com.sangupta.jerry.util.UriUtils;
+
+import io.airlift.airline.Arguments;
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 @Command(name = "imdb", description = "Fetch movie information from IMDB")
 public class IMDB implements Runnable, CliTool {

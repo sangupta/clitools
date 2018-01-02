@@ -21,10 +21,6 @@
 
 package com.sangupta.clitools.net;
 
-import io.airlift.airline.Command;
-import io.airlift.airline.HelpOption;
-import io.airlift.airline.SingleCommand;
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -34,8 +30,12 @@ import java.util.Enumeration;
 import javax.inject.Inject;
 
 import com.sangupta.clitools.CliTool;
-import com.sangupta.jerry.http.WebInvoker;
+import com.sangupta.clitools.WebInvoker;
 import com.sangupta.jerry.util.AssertUtils;
+
+import io.airlift.airline.Command;
+import io.airlift.airline.HelpOption;
+import io.airlift.airline.SingleCommand;
 
 /**
  * Display the current IP address of the machine.
